@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: #222;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.gradient {
+    --size: 700px;
+    --speed: 30s;
+    position: absolute;
+    z-index: -1;
+
+    width: var(--size);
+    height: var(--size);
+    filter: blur(calc(var(--size) / 5));
+    background-image: linear-gradient(hsl(158, 82%, 57%, 85%), hsl(252, 82%, 57%));
+    animation: rotate var(--speed) alternate infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-player {
+    display: flex;
+    flex-direction: row;
+    max-height: 500px;
+    width: 800px;
+    font-family: 'Alegreya SC', serif;
+}
+
+.player {
+    flex: 1;
+    padding: 3em 3em 0 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: #222222 2px solid;
+    border-right: none;
+    opacity: 1;
+}
+
+.player .vinyl {
+    width: 150px;
+    position: absolute;
+    top: -75px;
+    border-radius: 50%;
+}
+
+.player .vinyl-animation {
+    animation: spin 5s linear 0s infinite normal forwards;
+}
+
+.player .vinyl-paused {
+    animation-play-state: paused;
+}
+
+@keyframes spin {
+   from {
+       transform: rotate(0deg);
+   }
+   to {
+       transform: rotate(360deg);
+   }
+}
+
+.player h2 {
+    padding-bottom: 10px;
+    margin-bottom: 60px;
+    font-size: 40px;
+    color: black;
+    font-family: 'Julee', cursive;
+}
+
+.slidecontainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.slidecontainer i {
+    color: black;
+    font-size: 15px;
+}
+
+.slider {
+    margin: 0 20px;
+    height: 10px;
+    outline: none;
+    border-radius: 10px;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.controls > button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 20px;
+}
+
+.controls > button > i {
+    font-size: 25px;
+    color: black;
+}
+
+.play-pause > i {
+    font-size: 50px !important;
+}
+
+.playlist {
+    flex: 1;
+    padding: 2em 3em;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: black;
+    color: white;
+}
+
+.playlist h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'WindSong', cursive;
+}
+
+.playlist ul {
+    list-style-type: none;
+    flex-basis: 100%;
+    overflow-y: scroll;
+    padding: 0 5px;
+}
+
+.playlist ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 20px 20px 20px 0;
+    border-bottom: 1px solid #DDD;
+    font-family: 'Bubbler One', sans-serif;
+}
+
+.playlist .song-list .songName {
+    font-size: 1em;
+}
+
+.playlist ul li.active {
+    font-weight: bold;
+    font-size: 1.3em;
+    padding-left: 15px;
+}
+
+.copyright {
+    position: absolute;
+    font-size: 13px;
+    bottom: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #CCC;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3BA4A0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4545A4;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        overflow-y: scroll;
+    }
+
+    .music-player {
+        flex-direction: column;
+    }
+
+    .player {
+        border: none;
+    }
+
+    .copyright {
+        top: 0;
+        right: 10px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        text-align: left;
+    }
+}
