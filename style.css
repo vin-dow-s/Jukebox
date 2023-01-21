@@ -68,7 +68,7 @@ body {
     position: relative;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    border: #222222 2px solid;
+    border: black 3px solid;
     border-right: none;
     opacity: 1;
 }
