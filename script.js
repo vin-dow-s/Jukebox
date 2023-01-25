@@ -1,4 +1,5 @@
 const audio = document.querySelector('audio');
+const progressEl = document.querySelector('input[type="range"]');
 
 const vinyl = document.querySelector('.vinyl');
 const title = document.querySelector('#title');
@@ -10,11 +11,21 @@ const nextButton = document.querySelector('#next');
 
 const songList = document.querySelector('.song-list');
 
+let timer = document.querySelector('#timer');
+let update = setInterval(function() {
+    let mins = Math.floor(audio.currentTime / 60);
+    let secs = Math.floor(audio.currentTime % 60);
+    if (secs < 10) {
+        secs = '0' + String(secs);
+    }
+    timer.innerHTML = mins + ':' + secs;
+}, 10);
+
 let songArray = [];
 let songHeading = '';
 let songIndex = 0;
 let isPlaying = false;
-
+let mouseDownOnSlider = false;
 
 function loadAudio(){
     audio.src = songArray[songIndex];
@@ -110,3 +121,23 @@ audio.addEventListener('ended', function(){
 volumeSlider.addEventListener('input', function(){
     audio.volume = volumeSlider.value / 100;
 }, false);
+
+audio.addEventListener("timeupdate", () => {
+    if (!mouseDownOnSlider) {
+        progressEl.value = audio.currentTime / audio.duration * 100;
+    }
+});
+
+progressEl.addEventListener("change", () => {
+    const pct = progressEl.value / 100;
+    audio.currentTime = (audio.duration || 0) * pct;
+});
+
+progressEl.addEventListener("mousedown", () => {
+    mouseDownOnSlider = true;
+});
+
+progressEl.addEventListener("mouseup", () => {
+    mouseDownOnSlider = false;
+});
+

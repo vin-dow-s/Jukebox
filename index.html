@@ -17,23 +17,26 @@
             <div class="player">
                 <img src="images/vinyl.png" alt="Vinyl" class="vinyl">
                 <h2 id="title">Song name</h2>
-                <div class="slidecontainer">
-                    <i class="fa fa-volume-down" aria-hidden="true"></i>
-                    <input type="range" min="0" max="100" value="50" class="slider">
-                    <i class="fa fa-volume-up" aria-hidden="true"></i>
-                </div>
+                <input type="range" min="0" max="100" value="0" step="0.1">
+                <div id="timer">00:00</div>
                 <div class="controls">
                     <button class="previous" id="previous"><i class="fas fa-step-backward"></i></button>
                     <button class="play-pause" id="play-pause"><i class="fa-solid fa-play"></i></button>
                     <button class="next" id="next"><i class="fas fa-step-forward"></i></button>
                 </div>
+                <div class="slidecontainer">
+                    <i class="fa fa-volume-down" aria-hidden="true"></i>
+                    <input type="range" min="0" max="100" value="50" class="slider">
+                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+                </div>
+
                 <p class="copyright">© All songs written and recorded by myself</p>
             </div>
             <div class="playlist">
                 <h2>Playlist</h2>
                 <ul class="song-list">
                     <li data-src="music/O Camp.wav" data-name="O Camp" data-index="0"><span class="songName">O Camp</span><span>01:12</span></li>
-                    <li data-src="music/Jolly Journey.wav" data-name="Jolly Journey" data-index="1"><span class="songName">Jolly Journey</span><span>03:17</span></li>
+                    <li data-src="music/Jolly Journey.wav" data-name="Jolly Journey" data-index="1"><span class="songName">Jolly Journey</span><span>02:26</span></li>
                     <li data-src="music/Surfing Skies.wav" data-name="Surfing Skies" data-index="2"><span class="songName">Surfing Skies</span><span>01:05</span></li>
                     <li data-src="music/Leaving Home.wav" data-name="Leaving Home" data-index="3"><span class="songName">Leaving Home</span><span>01:43</span></li>
                     <li data-src="music/Glam Clash.wav" data-name="Glam Clash" data-index="4"><span class="songName">Glam Clash</span><span>01:18</span></li>
